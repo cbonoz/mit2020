@@ -2,6 +2,7 @@ import React, { Component, useEffect, useState } from 'react';
 
 import Slider from 'react-slick';
 import { getFiles, pullFile, siaUrl } from '../util/http';
+import logo from '../assets/acordo.png';
 
 export default function Carousel() {
 	const [ files, setFiles ] = useState([]);
@@ -27,19 +28,22 @@ export default function Carousel() {
 		infinite: true,
 		speed: 500,
 		autoplay: true,
-		slidesToShow: 2,
+		slidesToShow: 4,
 		slidesToScroll: 1
 	};
 	return (
-		<Slider {...settings}>
-			{files.map((f, i) => {
-				return (
-					<div key={i} onClick={() => get(f)} className="carousel-item">
-						<h1>{f.name}</h1>
-						<p>{f.skylink.substr(0, 40)}...</p>
-					</div>
-				);
-			})}
-		</Slider>
+		<div className="carousel">
+			<Slider {...settings}>
+				{files.map((f, i) => {
+					return (
+						<div key={i} onClick={() => get(f)} className="carousel-item">
+							<img src={logo} className="carousel-icon" />
+							<h1>{f.name}</h1>
+							<p>{f.skylink.substr(0, 20)}...</p>
+						</div>
+					);
+				})}
+			</Slider>
+		</div>
 	);
 }

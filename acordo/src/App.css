@@ -13,14 +13,31 @@
 	}
 }
 
+.carousel {
+	max-width: 1400px;
+	margin: 0 auto;
+}
+
+.carousel-icon {
+	width: 60px;
+}
+
 .carousel-item {
-	border: 1px solid green;
-	background: rgb(217, 240, 217);
-	padding: 20px;
+	/* border: 1px solid green; */
+	/* background: rgb(217, 240, 217); */
+	font-size: 24px;
+	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+	padding: 25px;
 	border-radius: 15px;
-	min-width: 200px;
-	max-width: 400px;
-	margin: 5px;
+	height: 200px;
+	/* min-width: 200px; */
+	/* max-width: 400px; */
+	width: 300px;
+	margin: 25px;
+}
+
+.carousel-item p {
+	font-size: 16px;
 }
 
 .carousel-item:hover {
