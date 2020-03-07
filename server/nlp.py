@@ -38,6 +38,7 @@ def generate_contract(text):
 
     print(doc)
     # TODO: parse and understand the input text -> generate a smart contract as code. Return the contract code.
+    print('params', name, symbol, amount)
 
     code = create_contract(name, symbol, amount)
     return code, {}
