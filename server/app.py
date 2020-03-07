@@ -8,7 +8,7 @@ from nlp import generate_contract
 from .skynet import Skynet
 
 app = Flask(__name__)
-cors = CORS(app)
+cors = CORS(app, resources={r"*": {"origins": "*"}})
 
 def get_seed():
   return random.choices([0,1,2], [.9,.05,.05],k=1)[0]

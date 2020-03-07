@@ -4,9 +4,16 @@ Built for the MIT 2020 Bitcoin hackathon
 
 Smart contract generation based on human input text.
 
-## Server
+## Client
+From the `contract-me` directory:
 
-From the ./server directory.
+<pre>
+    yarn
+    yarn start
+</pre>
+
+## Server
+From the `./server` directory:
 
 <pre>
     pip install -r requirements.txt
