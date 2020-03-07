@@ -13,15 +13,17 @@
 	}
 }
 
-.download-button {
+.carousel-item {
 	border: 1px solid green;
+	background: rgb(217, 240, 217);
 	padding: 20px;
 	border-radius: 15px;
+	min-width: 200px;
 	max-width: 400px;
 	margin: 5px;
 }
 
-.download-button:hover {
+.carousel-item:hover {
 	cursor: pointer;
 }
 

@@ -27,16 +27,16 @@ export default function Carousel() {
 		infinite: true,
 		speed: 500,
 		autoplay: true,
-		slidesToShow: 1,
+		slidesToShow: 2,
 		slidesToScroll: 1
 	};
 	return (
 		<Slider {...settings}>
 			{files.map((f, i) => {
 				return (
-					<div key={i} onClick={() => get(f)} className="download-button">
-						<h1>Contract: {f.name}</h1>
-						<p>{f.skylink}</p>
+					<div key={i} onClick={() => get(f)} className="carousel-item">
+						<h1>{f.name}</h1>
+						<p>{f.skylink.substr(0, 40)}...</p>
 					</div>
 				);
 			})}

@@ -35,11 +35,12 @@ function Home() {
 
 	const upload = () => {
 		const data = result;
-		if (!data['name'] || !data['code']) {
+		if (!data['code']) {
 			alert('Create a contract first!');
 			return;
 		}
-		uploadFile(data['name'], data['code']).then((res) => {
+
+		uploadFile(data['name'] || 'MyContract', data['code']).then((res) => {
 			const { skylink } = res.data;
 			console.log('upload res', skylink);
 			alert(`Uploaded! ${skylink}`);
@@ -55,6 +56,7 @@ function Home() {
 	return (
 		<div className="main-area">
 			<div className="header-middle">
+				<Carousel />
 				<img src={logo} className="center-logo" />
 
 				<p className="subheader">
@@ -128,7 +130,6 @@ function Home() {
 			</div>
 
 			<div className="subheader">Discover contracts uploaded by other users</div>
-			<Carousel />
 		</div>
 	);
 }
