@@ -8,7 +8,7 @@ export default class Header extends Component {
 			<div>
 				<nav className="navbar is-light" role="navigation" aria-label="main navigation">
 					<div className="navbar-brand">
-						<a className="navbar-item" href="https://bulma.io">
+						<a className="navbar-item" href="/">
 							<img src={logo} width="112" height="28" />
 						</a>
 
@@ -27,7 +27,9 @@ export default class Header extends Component {
 
 					<div id="navbarBasicExample" className="navbar-menu">
 						<div className="navbar-start">
-							<a className="navbar-item">Home</a>
+							<a className="navbar-item" href="/start">
+								Get Started
+							</a>
 
 							<a className="navbar-item">About</a>
 

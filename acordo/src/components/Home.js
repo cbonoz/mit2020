@@ -10,6 +10,7 @@ import logo from '../assets/acordo.png';
 
 import './Home.css';
 import Carousel from './Carousel';
+
 const KEYWORDS = [ 'named', 'symbol', 'with', 'tokens', 'contract' ];
 function Home() {
 	const [ text, setText ] = useState('');
@@ -55,24 +56,10 @@ function Home() {
 
 	return (
 		<div className="main-area">
-			<div className="header-middle">
-				<Carousel />
-				<img src={logo} className="center-logo" />
+			<img src={logo} className="small-logo" />
+			<div className="subheader">Discover contracts uploaded by other users</div>
+			<Carousel />
 
-				<p className="subheader">
-					Learn and write&nbsp;
-					<a
-						href="https://www.investopedia.com/news/what-erc20-and-what-does-it-mean-ethereum/"
-						target="_blank"
-					>
-						ERC20
-					</a>&nbsp;smart contracts using English powered by&nbsp;
-					<a target="_blank" ahref="https://github.com/OpenZeppelin/openzeppelin-contracts">
-						OpenZeppelin
-					</a>
-					&nbsp;Smart Contracts
-				</p>
-			</div>
 			<div className="columns">
 				<div className="column is-half">
 					<div className="header-text">Enter your description on the left...</div>
@@ -108,7 +95,7 @@ function Home() {
 			{result.reasons &&
 			result.reasons.length > 0 && (
 				<div className="why-section">
-					<div className="header-text">Why?</div>
+					<div className="header-text">Why this result?</div>
 					<div>
 						{result.reasons.map((r, i) => {
 							return <li key={i}>{r}</li>;
@@ -116,20 +103,6 @@ function Home() {
 					</div>
 				</div>
 			)}
-
-			<div className="faq-section">
-				<b>What is Acordo?</b>
-				<p>
-					Acordo is a web app allowing you to generate Ethereum contracts from english sentences. Powered by a
-					spaCy and OpenZepplin based server. Edit any created contracts on the right. Whenever you upload a
-					contract, it's available for others to find.
-				</p>
-				{/* <Collapsible trigger="What is a smart contract?" />
-				<Collapsible trigger="What statements can be entered?" />
-				<Collapsible trigger="What are recent contracts?" /> */}
-			</div>
-
-			<div className="subheader">Discover contracts uploaded by other users</div>
 		</div>
 	);
 }
