@@ -5,7 +5,7 @@ import random
 from flask_cors import CORS
 from nlp import generate_contract
 
-from skynet import Skynet
+from .skynet import Skynet
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/trade": {"origins": "*"}})
