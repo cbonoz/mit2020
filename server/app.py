@@ -4,6 +4,11 @@ from joblib import dump, load
 import random
 from flask_cors import CORS
 from .nlp import generate_contract
+from tinydb import TinyDB, Query
+
+# https://github.com/msiemens/tinydb
+db = TinyDB('files/db.json')
+table = db.table('uploads')
 
 from .skynet import Skynet
 
@@ -36,12 +41,24 @@ def post_upload():
       f.write(code)
 
     r = Skynet.UploadFile(file_name)
-    print(r)
-    return {'name': name}
+    result = {'name': name, 'skylink': r}
+    table.insert(result)
+    print(result)
+    return result
+
+# pull file
+@app.route('/all', methods=['GET']) 
+def post_get():
+  files =  table.all()
+  return jsonify(files)
 
 # pull file
 @app.route('/pull', methods=['POST']) 
-def post_get():
+def post_pull():
     data = request.json
-    name = data['name']
+    name = data['skylink']
+    r = Skynet.DownloadFileRequest(name)
+    return {'data': r.text}
+    
+    
     # TODO: return data for file based on name.

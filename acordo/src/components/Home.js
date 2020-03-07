@@ -8,10 +8,12 @@ import { useDebounce } from 'use-debounce';
 import logo from '../assets/acordo.png';
 
 import './Home.css';
+import Carousel from './Carousel';
 const KEYWORDS = [ 'named', 'symbol', 'with', 'tokens', 'contract' ];
 function Home() {
 	const [ text, setText ] = useState('');
 	const [ codeGraph, setCodeGraph ] = useState({});
+	const [ loading, setLoading ] = useState(false);
 
 	const [ debounceText ] = useDebounce(text, 1000);
 	const [ result, setResult ] = useState('');
@@ -37,7 +39,9 @@ function Home() {
 			return;
 		}
 		uploadFile(data['name'], data['code']).then((res) => {
-			console.log('upload res', res);
+			const { skylink } = res.data;
+			console.log('upload res', skylink);
+			alert(`Uploaded! ${skylink}`);
 		});
 	};
 
@@ -50,6 +54,7 @@ function Home() {
 	return (
 		<div className="main-area">
 			<div className="header-middle">
+				<Carousel />
 				<img src={logo} className="center-logo" />
 				<p>
 					Write&nbsp;
