@@ -9,7 +9,7 @@ def test_generate_contract_basic():
     assert graph == {}
     assert contract == True
 
-def test_generate_contract_basic():
+def test_generate_contract_pytest():
     text = "I want a smart contract"
     contract, graph = generate_contract(text)
     print('result', contract, graph)
