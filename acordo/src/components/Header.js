@@ -28,21 +28,10 @@ export default class Header extends Component {
 					<div id="navbarBasicExample" className="navbar-menu">
 						<div className="navbar-start">
 							<a className="navbar-item" href="/start">
-								Get Started
+								Bootstrap a contract
 							</a>
 
 							<a className="navbar-item">About</a>
-
-							<div className="navbar-item has-dropdown is-hoverable">
-								<a className="navbar-link">More</a>
-
-								<div className="navbar-dropdown">
-									<a className="navbar-item">Jobs</a>
-									<a className="navbar-item">Contact</a>
-									<hr className="navbar-divider" />
-									<a className="navbar-item">Report an issue</a>
-								</div>
-							</div>
 						</div>
 					</div>
 				</nav>
