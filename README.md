@@ -31,7 +31,7 @@ From the `./server` directory:
 ### Screenshots
 
 #### Home
-<img src="./img//home.png" width='600'/>
+<img src="./img//home.png" width='800'/>
 
 #### Creating a contract
-<img src="./img/main2.png" width='600'/>
+<img src="./img/main2.png" width='800'/>

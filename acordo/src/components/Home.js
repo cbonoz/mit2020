@@ -4,7 +4,7 @@ import Collapsible from 'react-collapsible';
 
 import 'ace-builds/src-noconflict/mode-java';
 import 'ace-builds/src-noconflict/theme-github';
-import { getCode, debounce, uploadFile } from '../util/http';
+import { getCode, debounce, uploadFile, siaUrl } from '../util/http';
 import { useDebounce } from 'use-debounce';
 import logo from '../assets/acordo.png';
 
@@ -16,6 +16,7 @@ function Home() {
 	const [ text, setText ] = useState('');
 	const [ codeGraph, setCodeGraph ] = useState({});
 	const [ loading, setLoading ] = useState(false);
+	const [ lastUpload, setLastUpload ] = useState('');
 
 	const [ debounceText ] = useDebounce(text, 1000);
 	const [ result, setResult ] = useState('');
@@ -45,6 +46,7 @@ function Home() {
 			const { skylink } = res.data;
 			console.log('upload res', skylink);
 			alert(`Uploaded! ${skylink}`);
+			setLastUpload(skylink);
 		});
 	};
 
@@ -58,10 +60,8 @@ function Home() {
 		<div className="main-area">
 			<div className="subheader">Create and discover contracts uploaded by other users</div>
 			<Carousel />
-
 			{/* <img src={logo} className="small-logo" /> */}
 			<div style={{ height: '50px' }} />
-
 			<div className="columns">
 				<div className="column is-half">
 					<div className="header-text">Enter your description on the left...</div>
@@ -93,7 +93,11 @@ function Home() {
 					Upload my Result!
 				</button>
 			</div>
-
+			{lastUpload && (
+				<a href={siaUrl(lastUpload)} target="_blank" className="subheader">
+					View Upload
+				</a>
+			)}
 			{result.reasons &&
 			result.reasons.length > 0 && (
 				<div className="why-section">
