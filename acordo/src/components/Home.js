@@ -56,9 +56,10 @@ function Home() {
 
 	return (
 		<div className="main-area">
-			<img src={logo} className="small-logo" />
 			<div className="subheader">Discover contracts uploaded by other users</div>
 			<Carousel />
+
+			<img src={logo} className="small-logo" />
 
 			<div className="columns">
 				<div className="column is-half">
