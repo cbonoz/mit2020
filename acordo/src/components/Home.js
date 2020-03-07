@@ -56,10 +56,11 @@ function Home() {
 
 	return (
 		<div className="main-area">
-			<div className="subheader">Discover contracts uploaded by other users</div>
+			<div className="subheader">Create and discover contracts uploaded by other users</div>
 			<Carousel />
 
-			<img src={logo} className="small-logo" />
+			{/* <img src={logo} className="small-logo" /> */}
+			<div style={{ height: '100px' }} />
 
 			<div className="columns">
 				<div className="column is-half">
