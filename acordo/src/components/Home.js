@@ -85,9 +85,10 @@ function Home() {
 				<div className="column is-half">
 					<div className="header-text">See the contract on the right...</div>
 					<AceEditor
-						width={'600px'}
+						width={'900px'}
 						mode="javascript"
 						theme="github"
+						fontSize={14}
 						value={result && result.code}
 						onChange={(e) => setResult({ ...result, code: e })}
 						name="UNIQUE_ID_OF_DIV"
