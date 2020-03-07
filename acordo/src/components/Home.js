@@ -42,12 +42,20 @@ function Home() {
 			return;
 		}
 
-		uploadFile(data['name'] || 'MyContract', data['code']).then((res) => {
-			const { skylink } = res.data;
-			console.log('upload res', skylink);
-			alert(`Uploaded! ${skylink}`);
-			setLastUpload(skylink);
-		});
+		setLoading(true);
+
+		uploadFile(data['name'] || 'MyContract', data['code'])
+			.then((res) => {
+				const { skylink } = res.data;
+				console.log('upload res', skylink);
+				alert(`Uploaded! ${skylink}`);
+				setLastUpload(skylink);
+				setLoading(false);
+			})
+			.catch((e) => {
+				console.error(e);
+				setLoading(false);
+			});
 	};
 
 	const KeywordBubble = (word, i) => (
@@ -89,7 +97,7 @@ function Home() {
 			</div>
 			{/* <div className="breakdown-section">{JSON.stringify(codeGraph)}</div> */}
 			<div className="upload-section">
-				<button onClick={upload} className="upload-button button is-primary">
+				<button disabled={loading} onClick={upload} className="upload-button button is-primary">
 					Upload my Result!
 				</button>
 			</div>
