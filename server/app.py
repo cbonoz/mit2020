@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify
 from joblib import dump, load
 import random
 from flask_cors import CORS
-from nlp import generate_contract
+from .nlp import generate_contract
 
 from .skynet import Skynet
 
@@ -15,7 +15,7 @@ def get_seed():
 
 @app.route("/")
 def helloWorld():
-  return "Hi from ContractME"
+  return "Hi from Acordo"
 
 @app.route('/generate', methods=['POST']) 
 def post_generate():

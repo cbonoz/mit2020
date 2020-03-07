@@ -3,7 +3,7 @@ from nlp import generate_contract
 
 
 def test_generate_contract_basic():
-    text = "I want a smart contract named ChrisCoin with 7000 tokens"
+    text = "I want a smart contract named ChrisCoin with 7000 tokens and symbol CB"
     contract, graph = generate_contract(text)
     print('result', contract, graph)
     assert graph == {}
