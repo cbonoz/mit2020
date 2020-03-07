@@ -60,7 +60,7 @@ function Home() {
 			<Carousel />
 
 			{/* <img src={logo} className="small-logo" /> */}
-			<div style={{ height: '100px' }} />
+			<div style={{ height: '50px' }} />
 
 			<div className="columns">
 				<div className="column is-half">

@@ -1,29 +1,33 @@
 import React, { Component } from 'react';
 import Carousel from './Carousel';
 import logo from '../assets/acordo.png';
+import tree from '../assets/tree.png';
 
 export default class Landing extends Component {
 	render() {
 		return (
 			<div>
 				<div className="header-middle">
-					{/* <Carousel /> */}
-					<img src={logo} className="center-logo" />
+					<div className="top-header">
+						{/* <Carousel /> */}
+						<img src={logo} className="center-logo" />
 
-					<p className="subheader">
-						Learn and write&nbsp;
-						<a
-							href="https://www.investopedia.com/news/what-erc20-and-what-does-it-mean-ethereum/"
-							target="_blank"
-						>
-							ERC20
-						</a>&nbsp;smart contracts using English powered by&nbsp;
-						<a target="_blank" ahref="https://github.com/OpenZeppelin/openzeppelin-contracts">
-							OpenZeppelin
-						</a>
-						&nbsp;Smart Contracts
-					</p>
+						<p className="subheader">
+							Learn and write&nbsp;
+							<a
+								href="https://www.investopedia.com/news/what-erc20-and-what-does-it-mean-ethereum/"
+								target="_blank"
+							>
+								ERC20
+							</a>&nbsp;smart contracts using English <br />powered by&nbsp;
+							<a target="_blank" ahref="https://github.com/OpenZeppelin/openzeppelin-contracts">
+								OpenZeppelin
+							</a>
+							&nbsp;Smart Contracts.
+						</p>
 
+						<button className="button is-primary">Get Started</button>
+					</div>
 					<div className="faq-section">
 						<div className="subheader">What is Acordo?</div>
 						<p>
@@ -35,6 +39,8 @@ export default class Landing extends Component {
 				<Collapsible trigger="What statements can be entered?" />
 				<Collapsible trigger="What are recent contracts?" /> */}
 					</div>
+
+					<img src={tree} className="tree-image" />
 				</div>
 			</div>
 		);

@@ -38,8 +38,17 @@
 	color: white;
 }
 
+.top-header {
+	background: #eee;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
 .App-link {
 	color: #61dafb;
+}
+
+.tree-image {
+	max-width: 1200px;
 }
 
 @keyframes App-logo-spin {
