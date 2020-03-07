@@ -25,8 +25,9 @@ export default class Landing extends Component {
 							</a>
 							&nbsp;Smart Contracts.
 						</p>
-
-						<button className="button is-primary">Get Started</button>
+						<a href="/start">
+							<button className="button is-primary">Get Started</button>
+						</a>
 					</div>
 					<div className="faq-section">
 						<div className="subheader">What is Acordo?</div>
