@@ -21,8 +21,8 @@ def helloWorld():
 def post_generate():
     data = request.json
     text = data['text']
-    contract = generate_contract(text)
-    return {'code': contract}
+    contract, graph = generate_contract(text)
+    return {'code': contract, 'graph': graph}
 
 # upload file
 @app.route('/upload', methods=['POST']) 

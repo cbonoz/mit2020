@@ -21,9 +21,9 @@ function Home() {
 			console.log('debounce text', debounceText);
 			if (debounceText) {
 				getCode(debounceText).then((result) => {
-					console.log('data', data);
 					const data = result.data;
-					setCode(data);
+					console.log('data', data);
+					setCode(data.code);
 				});
 			}
 		},
@@ -33,7 +33,7 @@ function Home() {
 	return (
 		<div className="main-area">
 			<div className="header-middle">
-				<img src={logo} className='center-logo' />
+				<img src={logo} className="center-logo" />
 				<p>
 					Powered by&nbsp;
 					<a target="_blank" ahref="https://github.com/OpenZeppelin/openzeppelin-contracts">

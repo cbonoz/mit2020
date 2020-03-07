@@ -40,4 +40,4 @@ def generate_contract(text):
     # TODO: parse and understand the input text -> generate a smart contract as code. Return the contract code.
 
     code = create_contract(name, symbol, amount)
-    return code, doc
+    return code, {}

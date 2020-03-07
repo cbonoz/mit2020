@@ -3,3 +3,4 @@ spacy==2.2.3
 requests==2.20.1
 joblib==0.14.0
 Flask_Cors==3.0.8
+pytest==5.3.5
