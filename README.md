@@ -29,7 +29,7 @@ From the `./server` directory:
 ### Screenshots
 
 Home
-<img src="./home.png" width='600'/>
+<img src="./img//home.png" width='600'/>
 
 Creating a contract
-<img src="./main2.png" width='600'/>
+<img src="./img/main2.png" width='600'/>
