@@ -66,7 +66,7 @@ function Home() {
 				</p>
 			</div>
 			<div className="columns">
-				<div className="column">
+				<div className="column is-half">
 					<div className="header-text">Enter your description on the left...</div>
 					<textarea
 						onChange={(e) => setText(e.target.value)}
@@ -77,13 +77,14 @@ function Home() {
 					<h2 className="header-text">Keywords</h2>
 					{KEYWORDS.map(KeywordBubble)}
 				</div>
-				<div className="column">
+				<div className="column is-half">
 					<div className="header-text">See the contract on the right...</div>
 					<AceEditor
+						width={'600px'}
 						mode="javascript"
 						theme="github"
 						value={result && result.code}
-						onChange={(e) => setResult({ ...result, code: e.target.value })}
+						onChange={(e) => setResult({ ...result, code: e })}
 						name="UNIQUE_ID_OF_DIV"
 						editorProps={{ $blockScrolling: true }}
 					/>,

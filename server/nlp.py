@@ -28,13 +28,18 @@ def generate_contract(text):
     for token in doc:
         print(token.text, token.dep_, token.head.text, token.head.pos_,
             [child for child in token.children])
+        if token.text == 'contract':
+            continue
         if token.head.text == 'named' and token.dep_ == 'oprd':
             data['name'] = token.text
         elif token.head.text == 'tokens' and token.dep_ == 'nummod':
             data['amount'] = token.text
-        elif token.head.text == 'symbol' and token.dep_ =='dobj':
-            data['symbol'] = token.text
-
+        elif token.dep_ =='dobj':
+            data[token.head.text] = token.text
+        elif token.dep_ == 'compound':
+            data[token.text] = token.head.text
+        elif token.dep_ == 'nummod':
+            data[token.head.text] = token.text
 
     has_data = len(data) > 0
 

@@ -9,8 +9,20 @@ def create_contract(name=None, symbol=None, amount=None, **kwargs):
     if not amount:
         amount = 1000
 
+    my_vars = [
+        {
+            'type': 'uint8' if kwargs[k].isdigit() else 'string',
+            'val': k
+        } for k in kwargs
+    ]
+    print('variables', kwargs, my_vars)
+
+    variables = '\n'.join([
+        '\t{} public {};'.format(m['type'], m['val']) for m in my_vars
+    ]) + '\n'
+
     return """
-    pragma solidity ^0.4.21;
+pragma solidity ^0.4.21;
 
 import "./EIP20Interface.sol";
 
@@ -21,20 +33,21 @@ contract %s is EIP20Interface {
     mapping (address => uint256) public balances;
     mapping (address => mapping (address => uint256)) public allowed;
 
-    string public name;                   //fancy name: eg Simon Bucks
-    uint8 public decimals;                //How many decimals to show.
-    string public symbol;                 //An identifier: eg SBX
+    string public name; // Token name: eg Simon Bucks
+    uint8 public decimals; //How many decimals to show.
+    string public symbol; //An identifier for the token: eg SBX
 
+%s
     function %s(
         string _tokenName,
         uint8 _decimalUnits,
         string _tokenSymbol
     ) public {
-        balances[msg.sender] = %s;               // Give the creator all initial tokens
-        totalSupply = %s;                        // Update total supply
-        name = "%s";                                   // Set the name for display purposes
-        decimals = _decimalUnits;                            // Amount of decimals for display purposes
-        symbol = "%s";                               // Set the symbol for display purposes
+        balances[msg.sender] = %s; // Give the creator all initial tokens
+        totalSupply = %s; // Update total supply
+        name = "%s"; // Set the name for display purposes
+        decimals = _decimalUnits; // Amount of decimals for display purposes
+        symbol = "%s"; // Set the symbol for display purposes
     }
 
     function transfer(address _to, uint256 _value) public returns (bool success) {
@@ -71,4 +84,4 @@ contract %s is EIP20Interface {
         return allowed[_owner][_spender];
     }
 
-""" % (name, name, amount, amount, name, symbol) #, symbol, amount)
+""" % (name, variables, name, amount, amount, name, symbol) #, symbol, amount)
