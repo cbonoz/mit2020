@@ -24,7 +24,7 @@ def create_contract(name=None, symbol=None, amount=None, **kwargs):
     ]) + '\n'
 
     assigns = '\n'.join([
-        '\t\t{} = {};'.format(m['key'], m['value']) for m in my_vars
+        '\t\t{} = {};'.format(m['key'], m['value'] if m['type'] == 'uint8' else '"%s"' % m['value']) for m in my_vars
     ])
 
     return """
