@@ -19,7 +19,7 @@ export default class Landing extends Component {
 								target="_blank"
 							>
 								ERC20
-							</a>&nbsp;smart contracts using English <br />powered by&nbsp;
+							</a>&nbsp;smart contracts using NLP <br />powered by&nbsp;
 							<a target="_blank" ahref="https://github.com/OpenZeppelin/openzeppelin-contracts">
 								OpenZeppelin
 							</a>
@@ -32,9 +32,9 @@ export default class Landing extends Component {
 					<div className="faq-section">
 						<div className="subheader">What is Acordo?</div>
 						<p>
-							Acordo is a web app allowing you to generate Ethereum contracts from english sentences.
-							Powered by a spaCy and OpenZepplin based server. Edit any created contracts and import them
-							in remix IDE. Whenever you upload a contract, it's available for others to find.
+							Acordo is a web app allowing you to generate Ethereum contracts from sentences. Powered by a
+							spaCy and OpenZepplin based server. Edit any created contracts and import them in remix IDE.
+							Whenever you upload a contract, it's available for others to find.
 						</p>
 						{/* <Collapsible trigger="What is a smart contract?" />
 				<Collapsible trigger="What statements can be entered?" />
