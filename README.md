@@ -1,3 +1,8 @@
+<p align='center'>
+    <img src='./img/acordo.png'>
+</p>
+
+
 # Acordo
 
 Built for the MIT 2020 Bitcoin hackathon
@@ -20,3 +25,11 @@ From the `./server` directory:
     python3 -m spacy download en_core_web_sm
     flask run
 </pre>
+
+### Screenshots
+
+Home
+<img src="./home.png" width='600'/>
+
+Creating a contract
+<img src="./main2.png" width='600'/>
