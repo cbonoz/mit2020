@@ -1,5 +1,5 @@
 import pytest
-from nlp import generate_contract
+from .nlp import generate_contract
 
 
 def test_generate_contract_basic():
@@ -7,5 +7,5 @@ def test_generate_contract_basic():
     data = generate_contract(text)
     
 def test_generate_contract_pytest():
-    text = "I want a smart contract"
+    text = "I want a smart contract with "
     data = generate_contract(text)

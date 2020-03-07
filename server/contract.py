@@ -1,7 +1,41 @@
 
 
+
+def _create_constructor(name, amount, **kwargs):
+    values = []
+    for k in kwargs:
+        val = kwargs[k]
+        if str(val).isdigit():
+            val = int(val)
+            t = 'uint8'
+        else:
+            t = 'string'
+        values.append({
+            'val': val,
+            'type': t
+        })
+
+    variables = '\n'.join(["{} public {};".format(v['type'], v['val']) for v in values])
+    args = ','.join(["{} _{}".format(v['type'], v['val']) for v in values])
+    assigns = '\n'.join(['{} = _{};\n'.format(v['val'], v['val']) for v in values])
+
+    return """
+
+    %s
+
+    function %s(
+        %s
+    ) public {
+        balances[msg.sender] = %s;               // Give the creator all initial tokens
+        totalSupply = %s;                        // Update total supply
+        %s
+    }
+    """.format(variables, name, args, amount, amount, assigns)
+
+
+
 # see https://github.com/OpenZeppelin/openzeppelin-contracts/tree/master/contracts/token/ERC20
-def create_contract(name=None, symbol=None, amount=None, **kwargs):
+def create_contract(name=None, amount=None, **kwargs):
     if not name:
         name = 'MyContract'
     if not symbol:
@@ -9,8 +43,10 @@ def create_contract(name=None, symbol=None, amount=None, **kwargs):
     if not amount:
         amount = 1000
 
+    cons = _create_constructor(**kwargs)
+
     return """
-    pragma solidity ^0.4.21;
+pragma solidity ^0.4.21;
 
 import "./EIP20Interface.sol";
 
@@ -21,21 +57,7 @@ contract %s is EIP20Interface {
     mapping (address => uint256) public balances;
     mapping (address => mapping (address => uint256)) public allowed;
 
-    string public name;                   //fancy name: eg Simon Bucks
-    uint8 public decimals;                //How many decimals to show.
-    string public symbol;                 //An identifier: eg SBX
-
-    function %s(
-        string _tokenName,
-        uint8 _decimalUnits,
-        string _tokenSymbol
-    ) public {
-        balances[msg.sender] = %s;               // Give the creator all initial tokens
-        totalSupply = %s;                        // Update total supply
-        name = "%s";                                   // Set the name for display purposes
-        decimals = _decimalUnits;                            // Amount of decimals for display purposes
-        symbol = "%s";                               // Set the symbol for display purposes
-    }
+    %s
 
     function transfer(address _to, uint256 _value) public returns (bool success) {
         require(balances[msg.sender] >= _value);
@@ -71,4 +93,4 @@ contract %s is EIP20Interface {
         return allowed[_owner][_spender];
     }
 
-""" % (name, name, amount, amount, name, symbol) #, symbol, amount)
+""" % (name, cons)
