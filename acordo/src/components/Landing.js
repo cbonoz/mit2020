@@ -32,9 +32,9 @@ export default class Landing extends Component {
 					<div className="faq-section">
 						<div className="subheader">What is Acordo?</div>
 						<p>
-							Acordo is a web app allowing you to generate Ethereum contracts from sentences. Powered by a
-							spaCy and OpenZepplin based server. Edit any created contracts and import them in remix IDE.
-							Whenever you upload a contract, it's available for others to find.
+							Acordo is a web app allowing you to generate Ethereum contracts from written sentences.
+							Powered by a spaCy and OpenZepplin based server. Edit any created contracts and import them
+							in remix IDE. Whenever you upload a contract, it's available for others to find.
 						</p>
 						{/* <Collapsible trigger="What is a smart contract?" />
 				<Collapsible trigger="What statements can be entered?" />
