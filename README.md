@@ -9,6 +9,8 @@ Built for the MIT 2020 Bitcoin hackathon
 
 Smart contract generation based on human input text.
 
+Built for the improving accessibility and contract development tools (sdk) challenges.
+
 ## Client
 From the `acordo` directory:
 
@@ -28,8 +30,8 @@ From the `./server` directory:
 
 ### Screenshots
 
-Home
+#### Home
 <img src="./img//home.png" width='600'/>
 
-Creating a contract
+#### Creating a contract
 <img src="./img/main2.png" width='600'/>
