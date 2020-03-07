@@ -24,6 +24,7 @@ def generate_contract(text):
 
 
     data = defaultdict(lambda x: '')
+    reasons = []
 
     for token in doc:
         print(token.text, token.dep_, token.head.text, token.head.pos_,
@@ -32,14 +33,19 @@ def generate_contract(text):
             continue
         if token.head.text == 'named' and token.dep_ == 'oprd':
             data['name'] = token.text
+            reasons.append('We detected the name ' + token.text)
         elif token.head.text == 'tokens' and token.dep_ == 'nummod':
             data['amount'] = token.text
+            reasons.append('We detected an amount of tokens ' + token.text)
         elif token.dep_ =='dobj':
             data[token.head.text] = token.text
+            reasons.append('We detected an argument ' + token.head.text + ' with value ' + token.text)
         elif token.dep_ == 'compound':
             data[token.text] = token.head.text
+            reasons.append('We detected an argument ' + token.text + ' with value ' + token.head.text)
         elif token.dep_ == 'nummod':
             data[token.head.text] = token.text
+            reasons.append('We detected an argument ' + token.head.text + ' with value ' + token.text)
 
     has_data = len(data) > 0
 
@@ -52,4 +58,6 @@ def generate_contract(text):
         code = 'Keep typing...'
     data['code'] = code
     data['graph'] = {}
+
+    data['reasons'] = reasons
     return data

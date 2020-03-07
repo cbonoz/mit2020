@@ -12,14 +12,20 @@ def create_contract(name=None, symbol=None, amount=None, **kwargs):
     my_vars = [
         {
             'type': 'uint8' if kwargs[k].isdigit() else 'string',
-            'val': k
+            'key': k,
+            'value': kwargs[k]
+
         } for k in kwargs
     ]
     print('variables', kwargs, my_vars)
 
     variables = '\n'.join([
-        '\t{} public {}; // User provided variable (to add to constructor)'.format(m['type'], m['val']) for m in my_vars
+        '\t{} public {}; // User provided variable (to add to constructor)'.format(m['type'], m['key']) for m in my_vars
     ]) + '\n'
+
+    assigns = '\n'.join([
+        '\t\t{} = {};'.format(m['key'], m['value']) for m in my_vars
+    ])
 
     return """
 pragma solidity ^0.4.21;
@@ -36,7 +42,6 @@ contract %s is EIP20Interface {
     string public name; // Token name: eg Simon Bucks
     uint8 public decimals; //How many decimals to show.
     string public symbol; //An identifier for the token: eg SBX
-
 %s
     function %s(
         string _tokenName,
@@ -48,6 +53,7 @@ contract %s is EIP20Interface {
         name = "%s"; // Set the name for display purposes
         decimals = _decimalUnits; // Amount of decimals for display purposes
         symbol = "%s"; // Set the symbol for display purposes
+%s
     }
 
     function transfer(address _to, uint256 _value) public returns (bool success) {
@@ -84,4 +90,4 @@ contract %s is EIP20Interface {
         return allowed[_owner][_spender];
     }
 
-""" % (name, variables, name, amount, amount, name, symbol) #, symbol, amount)
+""" % (name, variables, name, amount, amount, name, symbol, assigns) #, symbol, amount)

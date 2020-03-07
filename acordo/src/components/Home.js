@@ -1,5 +1,6 @@
 import React, { Component, useEffect, useState } from 'react';
 import AceEditor from 'react-ace';
+import Collapsible from 'react-collapsible';
 
 import 'ace-builds/src-noconflict/mode-java';
 import 'ace-builds/src-noconflict/theme-github';
@@ -54,16 +55,16 @@ function Home() {
 	return (
 		<div className="main-area">
 			<div className="header-middle">
-				<Carousel />
 				<img src={logo} className="center-logo" />
-				<p>
-					Write&nbsp;
+
+				<p className="subheader">
+					Learn and write&nbsp;
 					<a
 						href="https://www.investopedia.com/news/what-erc20-and-what-does-it-mean-ethereum/"
 						target="_blank"
 					>
 						ERC20
-					</a>&nbsp;smart contracts in English powered by&nbsp;
+					</a>&nbsp;smart contracts using English powered by&nbsp;
 					<a target="_blank" ahref="https://github.com/OpenZeppelin/openzeppelin-contracts">
 						OpenZeppelin
 					</a>
@@ -95,12 +96,39 @@ function Home() {
 					/>,
 				</div>
 			</div>
-			<div className="breakdown-section">{JSON.stringify(codeGraph)}</div>
+			{/* <div className="breakdown-section">{JSON.stringify(codeGraph)}</div> */}
 			<div className="upload-section">
-				<button onClick={upload} className="button is-primary">
+				<button onClick={upload} className="upload-button button is-primary">
 					Upload my Result!
 				</button>
 			</div>
+
+			{result.reasons &&
+			result.reasons.length > 0 && (
+				<div className="why-section">
+					<div className="header-text">Why?</div>
+					<div>
+						{result.reasons.map((r, i) => {
+							return <li key={i}>{r}</li>;
+						})}
+					</div>
+				</div>
+			)}
+
+			<div className="faq-section">
+				<b>What is Acordo?</b>
+				<p>
+					Acordo is a web app allowing you to generate Ethereum contracts from english sentences. Powered by a
+					spaCy and OpenZepplin based server. Edit any created contracts on the right. Whenever you upload a
+					contract, it's available for others to find.
+				</p>
+				{/* <Collapsible trigger="What is a smart contract?" />
+				<Collapsible trigger="What statements can be entered?" />
+				<Collapsible trigger="What are recent contracts?" /> */}
+			</div>
+
+			<div className="subheader">Discover contracts uploaded by other users</div>
+			<Carousel />
 		</div>
 	);
 }
