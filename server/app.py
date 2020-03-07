@@ -21,8 +21,8 @@ def helloWorld():
 def post_generate():
     data = request.json
     text = data['text']
-    contract, graph = generate_contract(text)
-    return {'code': contract, 'graph': graph}
+    data = generate_contract(text)
+    return {**data}
 
 # upload file
 @app.route('/upload', methods=['POST']) 
@@ -30,6 +30,13 @@ def post_upload():
     data = request.json
     name = data['name']
     code = data['code']
+
+    file_name = "files/{}".format(name)
+    with open(file_name, 'w') as f:
+      f.write(code)
+
+    r = Skynet.UploadFile(file_name)
+    print(r)
     return {'name': name}
 
 # pull file

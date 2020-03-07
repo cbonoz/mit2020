@@ -1,7 +1,7 @@
 
 
 # see https://github.com/OpenZeppelin/openzeppelin-contracts/tree/master/contracts/token/ERC20
-def create_contract(name=None, symbol=None, amount=None):
+def create_contract(name=None, symbol=None, amount=None, **kwargs):
     if not name:
         name = 'MyContract'
     if not symbol:

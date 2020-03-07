@@ -8,6 +8,18 @@
 	margin-bottom: 20px;
 }
 
+.keyword-bubble {
+	background: lightblue;
+	width: 100px;
+	margin: 10px;
+	display: inline-grid;
+	border-radius: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
 .center-logo {
 	width: 120px;
 }

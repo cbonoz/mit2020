@@ -6,7 +6,7 @@ export default class Header extends Component {
 	render() {
 		return (
 			<div>
-				<nav className="navbar is-light" role="navigation" aria-label="main navigation" is-dark>
+				<nav className="navbar is-light" role="navigation" aria-label="main navigation">
 					<div className="navbar-brand">
 						<a className="navbar-item" href="https://bulma.io">
 							<img src={logo} width="112" height="28" />
