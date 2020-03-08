@@ -6,7 +6,7 @@ import 'ace-builds/src-noconflict/mode-java';
 import 'ace-builds/src-noconflict/theme-github';
 import { getCode, debounce, uploadFile, siaUrl } from '../util/http';
 import { useDebounce } from 'use-debounce';
-import logo from '../assets/nevros.png';
+import logo from '../assets/nervos.png';
 import { sendCapacity } from '../util/send';
 
 import './Home.css';
