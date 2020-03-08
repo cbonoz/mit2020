@@ -38,7 +38,7 @@ function Home() {
 
 	const upload = () => {
 		const data = result;
-		if (!data['code']) {
+		if (!data['code'] || !data['code'].includes('contract')) {
 			alert('Create a contract first!');
 			return;
 		}
