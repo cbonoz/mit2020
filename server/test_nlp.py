@@ -14,7 +14,8 @@ def test_generate_contract_var():
 
 def test_generate_contract_complex():
     text = """
-    I want a smart contract named chris with 700 tokens and with symbol CB and height 800. It has a function cost which takes a price and amount and returns a total.
+    I want a smart contract named chris with 700 tokens and with symbol CB and height 800. 
+    It also has a function cost which takes a price and amount and returns a total.
     """
     data = generate_contract(text)
     print(data)

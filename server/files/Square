@@ -4,7 +4,7 @@ pragma solidity ^0.4.21;
 import "./EIP20Interface.sol";
 
 
-contract josh is EIP20Interface {
+contract Square is EIP20Interface {
 
     uint256 constant private MAX_UINT256 = 2**256 - 1;
     mapping (address => uint256) public balances;
@@ -13,20 +13,39 @@ contract josh is EIP20Interface {
     string public name; // Token name: eg Simon Bucks
     uint8 public decimals; //How many decimals to show.
     string public symbol; //An identifier for the token: eg SBX
+	uint8 public height; // User provided variable (to add to constructor)
+	uint8 public width; // User provided variable (to add to constructor)
+	string public style; // User provided variable (to add to constructor)
 
-
-
-    function josh(
+    function Square(
         string _tokenName,
         uint8 _decimalUnits,
         string _tokenSymbol
     ) public {
-        balances[msg.sender] = 1000; // Give the creator all initial tokens
-        totalSupply = 1000; // Update total supply
-        name = "josh"; // Set the name for display purposes
+        balances[msg.sender] = 700; // Give the creator all initial tokens
+        totalSupply = 700; // Update total supply
+        name = "Square"; // Set the name for display purposes
         decimals = _decimalUnits; // Amount of decimals for display purposes
-        symbol = "TOK"; // Set the symbol for display purposes
+        symbol = "CB"; // Set the symbol for display purposes
+		height = 800;
+		width = 400;
+		style = "rectangle";
     }
+
+    
+    function cost(uint8 price) public returns (uint8 total) {
+        // TODO
+         
+		return total;
+    }
+    
+
+    function cost(uint8 price) public returns (uint8 total) {
+        // TODO
+         
+		return total;
+    }
+    
 
     function transfer(address _to, uint256 _value) public returns (bool success) {
         require(balances[msg.sender] >= _value);
@@ -61,4 +80,5 @@ contract josh is EIP20Interface {
     function allowance(address _owner, address _spender) public view returns (uint256 remaining) {
         return allowed[_owner][_spender];
     }
+}
 
