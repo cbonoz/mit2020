@@ -43,13 +43,14 @@ function Send() {
 		const dest = tokens[NUM_TOKENS - 1];
 		try {
 			const result = await sendCapacity(key, capacity, dest);
-			setResult({ code: result });
+			const code = `Transaction: ${result}`;
+			setResult({ code });
 			setLoading(false);
 		} catch (e) {
 			console.error('error sending', e);
 			let errorMessage = e.message;
 			if (e.message && e.message.includes('not enough')) {
-				errorMessage += ' Your wallet may not have enough balance to fund this transaction.';
+				errorMessage += '. Your wallet may not have enough balance to fund this transaction.';
 			}
 			setResult({ code: errorMessage });
 			setLoading(false);
@@ -61,7 +62,9 @@ function Send() {
 			<div className="subheader">Send Transactions using human language.</div>
 			<p>Powered by</p>
 			{/* <Carousel /> */}
-			<img src={logo} className="small-logo" />
+			<a href="https://www.nervos.org/" target="_blank">
+				<img src={logo} className="small-logo" />
+			</a>
 			<div style={{ height: '50px' }} />
 			<div className="columns">
 				<div className="column is-half">
@@ -74,7 +77,7 @@ function Send() {
 						rows="10"
 					/>
 					<input
-						class="input is-primary"
+						className="input is-primary"
 						type="text"
 						placeholder="Enter transaction key"
 						onChange={(e) => setKey(e.target.value)}
