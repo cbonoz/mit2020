@@ -31,6 +31,10 @@ export default class Header extends Component {
 								Bootstrap a Contract
 							</a>
 
+							<a className="navbar-item" href="/send">
+								Send a transaction
+							</a>
+
 							{/* <a className="navbar-item">About</a> */}
 						</div>
 					</div>

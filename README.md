@@ -35,3 +35,7 @@ From the `./server` directory:
 
 #### Creating a contract
 <img src="./img/main2.png" width='800'/>
+
+
+#### Sending a Nevros transaction
+<img src="./img/nevros.png" width='800'/>

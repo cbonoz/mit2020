@@ -6,6 +6,7 @@ import 'bulma/css/bulma.css';
 import Home from './components/Home';
 import Header from './components/Header';
 import Landing from './components/Landing';
+import Send from './components/Send';
 
 function App() {
 	return (
@@ -15,6 +16,9 @@ function App() {
 				<Switch>
 					<Route path="/start">
 						<Home />
+					</Route>
+					<Route path="/send">
+						<Send />
 					</Route>
 					<Route path="/">
 						<Landing />
