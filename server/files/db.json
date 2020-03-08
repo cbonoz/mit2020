@@ -4,6 +4,6 @@
 		"2": { "name": "CustomCoin", "skylink": "sia://AAAbFyxgp_PoKB2xuGqJRjeAYRn98bPDbjS3x4QQuo4qig" },
 		"3": { "name": "chris", "skylink": "sia://AABlIbR8W8PKP3GRL0RsxKfRvcS_gtM-6M73jxsdHUD-cA" },
 		"4": { "name": "Square", "skylink": "sia://AABmozTIZTRcpVnIbYe3giPwYNw1xdJJAo4qfnK6NXB1ig" },
-		"5": { "name": "MyContract", "skylink": "sia://AADDDYwsMz5jfkcGsmIpcU_9S6XwBnXwfIt3bmfSoY4Tvg" }
+		"5": { "name": "OceanContract", "skylink": "sia://AADDDYwsMz5jfkcGsmIpcU_9S6XwBnXwfIt3bmfSoY4Tvg" }
 	}
 }
