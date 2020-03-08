@@ -10,6 +10,7 @@ import logo from '../assets/acordo.png';
 
 import './Home.css';
 import Carousel from './Carousel';
+import KeywordBubble from './KeywordBubble';
 
 const KEYWORDS = [ 'named', 'symbol', 'with', 'tokens', 'contract', 'function', 'takes', 'returns' ];
 function Home() {
@@ -58,15 +59,10 @@ function Home() {
 			});
 	};
 
-	const KeywordBubble = (word, i) => (
-		<div key={i} className="keyword-bubble">
-			{word}
-		</div>
-	);
-
 	return (
 		<div className="main-area">
 			<div className="subheader">Create and discover contracts uploaded by other users</div>
+			<p>Recent uploaded smart contracts</p>
 			<Carousel />
 			{/* <img src={logo} className="small-logo" /> */}
 			<div style={{ height: '50px' }} />
@@ -80,7 +76,7 @@ function Home() {
 						rows="10"
 					/>
 					<h2 className="header-text">Keywords</h2>
-					{KEYWORDS.map(KeywordBubble)}
+					{KEYWORDS.map((word, i) => <KeywordBubble word={word} index={i} />)}
 				</div>
 				<div className="column is-half">
 					<div className="header-text">See the contract on the right...</div>

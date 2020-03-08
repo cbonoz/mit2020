@@ -12,15 +12,17 @@ import { sendCapacity } from '../util/send';
 import './Home.css';
 
 import Carousel from './Carousel';
+import KeywordBubble from './KeywordBubble';
 
 const NUM_TOKENS = 5;
+const KEYWORDS = [ 'send', 'capacity', 'balance' ];
 
 function Send() {
 	const [ text, setText ] = useState('');
 	const [ codeGraph, setCodeGraph ] = useState({});
 	const [ loading, setLoading ] = useState(false);
 	const [ lastUpload, setLastUpload ] = useState('');
-	const [key, setKey] = useState('')
+	const [ key, setKey ] = useState('');
 
 	const [ debounceText ] = useDebounce(text, 1000);
 	const [ result, setResult ] = useState('');
@@ -45,7 +47,11 @@ function Send() {
 			setLoading(false);
 		} catch (e) {
 			console.error('error sending', e);
-			setResult({ code: e.message });
+			let errorMessage = e.message;
+			if (e.message && e.message.includes('not enough')) {
+				errorMessage += ' Your wallet may not have enough balance to fund this transaction.';
+			}
+			setResult({ code: errorMessage });
 			setLoading(false);
 		}
 	};
@@ -66,7 +72,23 @@ function Send() {
 						placeholder="Send 100 capacity to..."
 						rows="10"
 					/>
-					<input class="input is-primary" type="text" placeholder="Enter transaction key" onChange={e => setKey(e.target.value)} />
+					<input
+						class="input is-primary"
+						type="text"
+						placeholder="Enter transaction key"
+						onChange={(e) => setKey(e.target.value)}
+					/>
+
+					<a
+						style={{ float: 'left', paddingLeft: '2px' }}
+						href="https://docs.nervos.org/getting-started/wallet.html"
+						target="_blank"
+					>
+						Create a wallet to get started
+					</a>
+
+					<h2 className="header-text">Keywords</h2>
+					{KEYWORDS.map((word, i) => <KeywordBubble word={word} index={i} />)}
 				</div>
 				<div className="column is-half">
 					<div className="header-text">See the result on the right</div>
