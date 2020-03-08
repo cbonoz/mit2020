@@ -75,7 +75,7 @@ export const sendCapacity = async (key, capacity, dest) => {
    * send transaction
    */
 	const toAddress = ckb.utils.privateKeyToAddress(
-		'0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff',
+		dest.includes('0x') ? dest : '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff',
 		{
 			prefix: 'ckt'
 		}
