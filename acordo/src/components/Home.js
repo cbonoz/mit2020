@@ -76,7 +76,9 @@ function Home() {
 						rows="10"
 					/>
 					<h2 className="header-text">Keywords</h2>
-					{KEYWORDS.map((word, i) => <KeywordBubble word={word} index={i} />)}
+					{KEYWORDS.map((word, i) => (
+						<KeywordBubble word={word} index={i} onClick={(w) => setText(text + ' ' + w)} />
+					))}
 				</div>
 				<div className="column is-half">
 					<div className="header-text">See the contract on the right...</div>

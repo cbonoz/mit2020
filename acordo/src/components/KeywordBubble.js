@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 
-export default class KeywordBubble extends Component {
-	render() {
-		return (
-			<div key={this.props.index} className="keyword-bubble">
-				{this.props.word}
-			</div>
-		);
-	}
+export default function KeywordBubble(props) {
+	const { index, word, onClick } = props;
+
+	return (
+		<div
+			key={index}
+			className="keyword-bubble"
+			onClick={() => {
+				onClick(word);
+			}}
+		>
+			{word}
+		</div>
+	);
 }
