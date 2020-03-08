@@ -67,6 +67,7 @@ function Send() {
 				<div className="column is-half">
 					<div className="header-text">Enter your transaction on the left...</div>
 					<textarea
+						value={text}
 						onChange={(e) => setText(e.target.value)}
 						className="textarea"
 						placeholder="Send 100 capacity to..."

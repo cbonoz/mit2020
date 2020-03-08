@@ -70,6 +70,7 @@ function Home() {
 				<div className="column is-half">
 					<div className="header-text">Enter your description on the left...</div>
 					<textarea
+						value={text}
 						onChange={(e) => setText(e.target.value)}
 						className="textarea"
 						placeholder="I want a smart contract with..."
@@ -77,7 +78,7 @@ function Home() {
 					/>
 					<h2 className="header-text">Keywords</h2>
 					{KEYWORDS.map((word, i) => (
-						<KeywordBubble word={word} index={i} onClick={(w) => setText(text + ' ' + w)} />
+						<KeywordBubble key={i} word={word} onClick={(w) => setText(text + ' ' + w)} />
 					))}
 				</div>
 				<div className="column is-half">
