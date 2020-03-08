@@ -59,7 +59,7 @@ function Send() {
 
 	return (
 		<div className="main-area">
-			<div className="subheader">Send Transactions using human language.</div>
+			<div className="subheader">Send Blockchain Transactions using human language.</div>
 			<p>Powered by</p>
 			{/* <Carousel /> */}
 			<a href="https://www.nervos.org/" target="_blank">
