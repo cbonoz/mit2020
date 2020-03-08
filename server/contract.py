@@ -1,13 +1,38 @@
 
 
+
+def _create_function(name, args=None, returns=None, **kwargs):
+
+    if not args:
+        args = []
+
+    # TODO: add type mapping
+    return_string = 'returns (uint8 {})'.format(returns) if returns else ''
+
+    arg_string = ','.join([
+        'uint8 {}'.format(a) for a in args
+    ])
+
+    return_statement = '\t\treturn {};'.format(returns) if returns else ''
+
+    return """
+    function %s(%s) public %s {
+        // TODO
+         
+%s
+    }
+    """ % (name, arg_string, return_string, return_statement)
+
 # see https://github.com/OpenZeppelin/openzeppelin-contracts/tree/master/contracts/token/ERC20
-def create_contract(name=None, symbol=None, amount=None, **kwargs):
+def create_contract(name=None, symbol=None, amount=None, functions=None, **kwargs):
     if not name:
         name = 'MyContract'
     if not symbol:
         symbol = 'TOK'
     if not amount:
         amount = 1000
+    if not functions:
+        functions = []
 
     my_vars = [
         {
@@ -17,7 +42,6 @@ def create_contract(name=None, symbol=None, amount=None, **kwargs):
 
         } for k in kwargs
     ]
-    print('variables', kwargs, my_vars)
 
     variables = '\n'.join([
         '\t{} public {}; // User provided variable (to add to constructor)'.format(m['type'], m['key']) for m in my_vars
@@ -26,6 +50,12 @@ def create_contract(name=None, symbol=None, amount=None, **kwargs):
     assigns = '\n'.join([
         '\t\t{} = {};'.format(m['key'], m['value'] if m['type'] == 'uint8' else '"%s"' % m['value']) for m in my_vars
     ])
+
+    function_text = '\n'.join([
+        _create_function(**f) for f in functions
+    ]) + '\n'
+
+    print('variables', kwargs, my_vars, functions)
 
     return """
 pragma solidity ^0.4.21;
@@ -56,6 +86,7 @@ contract %s is EIP20Interface {
 %s
     }
 
+    %s
     function transfer(address _to, uint256 _value) public returns (bool success) {
         require(balances[msg.sender] >= _value);
         balances[msg.sender] -= _value;
@@ -91,4 +122,4 @@ contract %s is EIP20Interface {
     }
 }
 
-""" % (name, variables, name, amount, amount, name, symbol, assigns) #, symbol, amount)
+""" % (name, variables, name, amount, amount, name, symbol, assigns, function_text) #, symbol, amount)

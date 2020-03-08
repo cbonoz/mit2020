@@ -11,7 +11,7 @@ import logo from '../assets/acordo.png';
 import './Home.css';
 import Carousel from './Carousel';
 
-const KEYWORDS = [ 'named', 'symbol', 'with', 'tokens', 'contract' ];
+const KEYWORDS = [ 'named', 'symbol', 'with', 'tokens', 'contract', 'function', 'takes', 'returns' ];
 function Home() {
 	const [ text, setText ] = useState('');
 	const [ codeGraph, setCodeGraph ] = useState({});
