@@ -80,12 +80,13 @@ function Send() {
 					/>
 
 					<a
-						style={{ float: 'left', paddingLeft: '2px' }}
+						style={{ float: 'left', paddingLeft: '2px', clear: 'both' }}
 						href="https://docs.nervos.org/getting-started/wallet.html"
 						target="_blank"
 					>
 						Create a wallet to get started
 					</a>
+					<hr />
 
 					<h2 className="header-text">Keywords</h2>
 					{KEYWORDS.map((word, i) => <KeywordBubble word={word} index={i} />)}
