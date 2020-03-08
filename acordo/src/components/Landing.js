@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Carousel from './Carousel';
 import logo from '../assets/acordo.png';
-import tree from '../assets/tree.png';
+import tree from '../assets/tree2.png';
 
 export default class Landing extends Component {
 	render() {
